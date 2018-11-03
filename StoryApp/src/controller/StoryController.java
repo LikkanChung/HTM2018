@@ -20,9 +20,8 @@ public class StoryController {
 	}
 	
 	private void displayWelcomeScreen() {
-		view.setText("Welcome to the game!");
 		view.changeTextSize(60);
-		
-		view.setText("Do you want to start?");
+		view.setText("Welcome to the game!");
+						
 	}
 }

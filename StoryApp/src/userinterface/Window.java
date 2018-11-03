@@ -42,8 +42,6 @@ public class Window{
 		myScene = new Scene(root, screenWidth, screenHeight);
 		myScene.getStylesheets().add("styles.css");
 		
-		root.setStyle("-fx-background-color: #d35800;");
-		
 		primaryStage.setScene(myScene);
 		primaryStage.setMaximized(true);
 		primaryStage.show();
@@ -68,18 +66,18 @@ public class Window{
 		vBox = new VBox();
 		vBox.setMaxHeight(screenHeight + 900);
 		vBox.setMaxWidth(screenWidth + 1800);
-		vBox.setStyle("-fx-background-color: #ffffff;");
 		vBox.setAlignment(Pos.CENTER);
+		vBox.getStyleClass().add("vbox");
 		
 		// Initialising text for logo. 
 		logoText = new Text();
 		logoText.setText("Game Title");
-		logoText.setStyle("-fx-font: 75 arial;");
+		logoText.getStyleClass().add("logoText");
 		
 		// Initialising timer and phone number. 
 		timerAndPhoneNumber = new Text();
 		timerAndPhoneNumber.setText("Timer goes here." + "\n \n" + "Phone Number here.");
-		timerAndPhoneNumber.setStyle("-fx-font: 60 arial;");		
+		timerAndPhoneNumber.getStyleClass().add("bottomText");		
 	}
 	
 	private void setScreenDimensions() {
@@ -99,6 +97,6 @@ public class Window{
 	}
 	
 	public void changeTextSize(int size) {
-		contentText.setStyle("-fx-font: " + size + " arial;");
+		contentText.setStyle("-fx-font: " + size + "\"Tw Cen MT\"");
 	}
 }
