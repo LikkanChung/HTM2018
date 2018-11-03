@@ -66,11 +66,17 @@ public class StoryFactory {
 		Part p1 = new Part("101", "The first part", "I can go 2 or 3", null);
 		story.addRootPart(p1);
 		Part p2 = new Part("102", "Part 2", "From part 2 I can go to 4 or 5", p1);
+		p1.addChild(p2);
 		Part p3 = new Part("103", "Part 3", "From part 3 I can go to 6 or 7", p1);
+		p1.addChild(p3);
 		Part p4 = new Part("104", "Part 4", "From part 4 I end", p2);
+		p2.addChild(p4);
 		Part p5 = new Part("105", "Part 5", "From part 5 I end", p2);
+		p2.addChild(p5);
 		Part p6 = new Part("106", "Part 6", "From part 6 I end", p3);
+		p3.addChild(p6);
 		Part p7 = new Part("107", "Part 7", "From part 7 I end", p3);
+		p3.addChild(p7);
 		
 		return story;
 	}

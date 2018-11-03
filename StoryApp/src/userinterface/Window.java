@@ -14,13 +14,16 @@ import javafx.stage.Stage;
 public class Window{
 	
 	private String title = "GameProject";
+	@SuppressWarnings("unused")
 	private Stage primaryStage;
+	private Scene myScene;
 	private int screenWidth;
 	private int screenHeight;
 	
 	private BorderPane root;
 	private Text logoText;
 	private Text timerAndPhoneNumber;
+	private Text contentText;
 	private VBox vBox;
 	
 	public Window (Stage primaryStage) {
@@ -33,9 +36,15 @@ public class Window{
 		addScreenElements();		
 		setScreenDimensions();
 		
-		root.setStyle("-fx-background-color: #939393;");
 		
-		primaryStage.setScene(new Scene(root, screenWidth, screenHeight));
+		contentText = new Text();
+		
+		myScene = new Scene(root, screenWidth, screenHeight);
+		myScene.getStylesheets().add("styles.css");
+		
+		root.setStyle("-fx-background-color: #d35800;");
+		
+		primaryStage.setScene(myScene);
 		primaryStage.setMaximized(true);
 		primaryStage.show();
 	}
@@ -57,6 +66,8 @@ public class Window{
 	private void intialiseWindowContent() {
 		// Game screen goes here.
 		vBox = new VBox();
+		vBox.setMaxHeight(screenHeight + 900);
+		vBox.setMaxWidth(screenWidth + 1800);
 		vBox.setStyle("-fx-background-color: #ffffff;");
 		vBox.setAlignment(Pos.CENTER);
 		
@@ -75,5 +86,19 @@ public class Window{
 		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 		screenWidth = gd.getDisplayMode().getWidth() - 200;
 		screenHeight = gd.getDisplayMode().getHeight() - 200;
+	}
+	
+	public void setText(String text) {		
+		contentText.setText(text);
+		if(vBox.getChildren() == null) { // If component contains no text. 
+			vBox.getChildren().add(contentText);
+		}else {
+			vBox.getChildren().remove(contentText);
+			vBox.getChildren().add(contentText);
+		}
+	}
+	
+	public void changeTextSize(int size) {
+		contentText.setStyle("-fx-font: " + size + " arial;");
 	}
 }
