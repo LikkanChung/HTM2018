@@ -10,7 +10,7 @@ public class StoryFactory {
 
 	public static Story getStory(String id ) {
 		
-		final String QUERY = "";
+		final String QUERY = "SELECT * FROM story";
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -42,6 +42,21 @@ public class StoryFactory {
 		
 		if (rs != null) {
 			System.out.println("Returned a set");
+			try {
+				rs.next();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		// convert rs into a story
+		
+		try {
+			System.out.println(rs.getInt(1));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return new Story("1", "Name of Story", "");
 	}
