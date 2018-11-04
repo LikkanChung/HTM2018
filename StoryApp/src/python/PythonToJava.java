@@ -40,10 +40,6 @@ public class PythonToJava {
 			e.printStackTrace();
 		}
 		System.out.println("test");
-	
-		
-
-	
 
 		return s.toString();
 		
