@@ -9,7 +9,7 @@ public final class DBConfig {
 	
 
 	protected static final String USERNAME = "root";
-	protected static final String PASSWORD = "cRuFadr4xe";
+	protected static final String PASSWORD = "***";
 	protected static final String HOST_URL = "jdbc:mysql://127.0.0.1/HTMStory";
 	
 }
