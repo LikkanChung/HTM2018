@@ -75,7 +75,7 @@ public class Window{
 		
 		// Initialising timer and phone number. 
 		timerAndPhoneNumber = new Text();
-		timerAndPhoneNumber.setText("Timer goes here." + "\n \n" + "07418 343 514");
+		timerAndPhoneNumber.setText("        30.0" + "\n \n" + "07418 343 514");
 		timerAndPhoneNumber.getStyleClass().add("bottomText");		
 	}
 	

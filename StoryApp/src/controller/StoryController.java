@@ -21,7 +21,7 @@ public class StoryController {
 	
 	private void displayWelcomeScreen() {
 		view.changeTextSize(60);
-		view.setText("Welcome to the game!");
+		view.setText("Welcome to the game!" + "\n" + "          You Lost!");
 	}
 	
 	private void beginStory() {
