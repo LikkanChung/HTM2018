@@ -16,7 +16,7 @@ public class PythonToJava {
 		try {
 			s = new StringBuilder();
 			p = Runtime.getRuntime().exec("python " + pythonFilePath);
-		
+
 			br = new BufferedReader(new InputStreamReader(p.getInputStream()));
 			String line = "";
 			
