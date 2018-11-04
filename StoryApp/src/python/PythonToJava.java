@@ -19,12 +19,14 @@ public class PythonToJava {
 
 			br = new BufferedReader(new InputStreamReader(p.getInputStream()));
 			String line = "";
-			while(view.getTimeRemaining() != 0)
+			while(view.getTimeRemaining() > 0)
 			{
 				
 				if((line=br.readLine()) != null)
-				s.append(line);
-				System.out.println(line);
+				{
+					s.append(line);
+					System.out.println(line);
+				}
 			}
 		
 			
