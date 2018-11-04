@@ -19,14 +19,22 @@ public class PythonToJava {
 
 			br = new BufferedReader(new InputStreamReader(p.getInputStream()));
 			String line = "";
-			
+
 			while((line = br.readLine()) != null) {
 				s.append(line);
 				System.out.println(line);
 			}
+			Runtime.getRuntime().exec("killall python");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		System.out.println("test");
+	
+		
+
+	
+
 		return s.toString();
+		
 	}
 }

@@ -19,7 +19,7 @@ public class Launcher extends Application {
 		Story story = StoryFactory.sampleStory(); // Generates sample story. 
 		Window window = new Window (primaryStage);
 		StoryController controller = new StoryController(story, window);
-		System.out.println(PythonToJava.executePythonFile("/home/nathan/HTM2018/StoryApp/src/python/recieveSMS.py"));
+		//PythonToJava.executePythonFile("/home/nathan/HTM2018/StoryApp/src/python/recieveSMS.py");
 	}
 }
 
