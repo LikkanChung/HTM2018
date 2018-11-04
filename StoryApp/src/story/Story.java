@@ -1,12 +1,12 @@
 package story;
 
 public class Story {
-	public String storyID;
+	public int storyID;
 	public String name;
 	public String creator;
 	public Part root;
 	
-	public Story(String id, String n, String c) {
+	public Story(int id, String n, String c) {
 		this.storyID = id;
 		this.name = n;
 		this.creator = c;
