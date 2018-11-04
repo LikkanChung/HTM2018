@@ -4,7 +4,7 @@ package controller;
 
 import story.Story;
 import userinterface.Window;
-
+import python.PythonToJava;
 public class StoryController {
 	
 	private Story model;
@@ -31,6 +31,9 @@ public class StoryController {
 		// Choices that you make from the beginning help to influence the story.
 		view.setText(model.name);
 		view.startTimer();
+		
+		
+		PythonToJava.executePythonFile("~/HTM2018/StoryApp/src/python/recieveSMS.py",view);
 	
     }
 }

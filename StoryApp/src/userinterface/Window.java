@@ -107,6 +107,10 @@ public class Window{
 			vBox.getChildren().add(contentText);
 		}
 	}
+	public int getTimeRemaining()
+	{
+		return timeSeconds;
+	}
 	
 	@SuppressWarnings("unchecked")
 	public void startTimer() {
