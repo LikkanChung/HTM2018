@@ -5,15 +5,13 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
 public class StoryFactory {
 
-	public static Story getStory(String id ) {
-		
-		final String QUERY = "SELECT * FROM story, part WHERE story.storyID=part.storyID";
-		
+	private static ResultSet getResult(String sqlquery) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
@@ -26,21 +24,62 @@ public class StoryFactory {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		if (con != null) {
-			System.out.println("Connected to database");
-		} else {
-			System.out.println("Failed to connect");
-		}
-		
+				
 		Statement stmt;
 		ResultSet rs = null;
 		try {
 			stmt = con.createStatement();
-			rs = stmt.executeQuery(QUERY);
+			rs = stmt.executeQuery(sqlquery);
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
+		
+		return rs;
+	}
+	
+	public static ArrayList<Story> getStories(){
+		final String QUERY = "SELECT * FROM story";
+		ResultSet rs = getResult(QUERY);
+		ArrayList<Story> list = new ArrayList<Story>();
+		try {
+			while(!rs.isLast()) {
+				rs.next();
+				int StoryID = rs.getInt(1);
+				String name = rs.getString(2);
+				String creator = rs.getString(3);
+				list.add(new Story(StoryID, name, creator));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
+	public static ArrayList<Story> getStoriesById(int storyID) {
+		final String QUERY = "SELECT * FROM story WHERE story.storyID=" + storyID;
+		ResultSet rs = getResult(QUERY);
+		ArrayList<Story> list = new ArrayList<Story>();
+		try {
+			while(!rs.isLast()) {
+				rs.next();
+				int StoryID = rs.getInt(1);
+				String name = rs.getString(2);
+				String creator = rs.getString(3);
+				list.add(new Story(StoryID, name, creator));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
+	public static Story getStory(String id ) {
+		
+		final String QUERY = "SELECT * FROM story, part WHERE story.storyID=part.storyID";
+		
+		ResultSet rs = getResult(QUERY);
 		
 		Story ret = null;
 		HashMap<Integer,Part> parts = new HashMap<Integer,Part>(); 
@@ -76,16 +115,14 @@ public class StoryFactory {
 					}
 				}
 
-				
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		
 		// convert rs into a story
 		
-		return new Story(1, "Name of Story", "");
+		return ret;
 	}
 	
 	public static Story sampleStory() {
