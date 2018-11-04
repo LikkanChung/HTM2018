@@ -75,20 +75,18 @@ public class StoryFactory {
 		return list;
 	}
 	
-	public static Story getStory(String id ) {
+	public static Story getStory(int id) {
 		
-		final String QUERY = "SELECT * FROM story, part WHERE story.storyID=part.storyID";
+		final String QUERY = "SELECT * FROM story, part WHERE story.storyID=part.storyID AND story.storyID=" + id;
 		
 		ResultSet rs = getResult(QUERY);
 		
 		Story ret = null;
 		HashMap<Integer,Part> parts = new HashMap<Integer,Part>(); 
 		if (rs != null) {
-			System.out.println("Returned a set");
 			
 			try {
-				while (!rs.isLast()) {
-					rs.next();
+				while (rs.next()) {
 					int storyID = rs.getInt(1);
 					String name = rs.getString(2);
 					String creator = rs.getString(3);
@@ -120,7 +118,7 @@ public class StoryFactory {
 			}
 		}
 		
-		// convert rs into a story
+		// !!! returns null if no story matching id is found
 		
 		return ret;
 	}
@@ -144,4 +142,5 @@ public class StoryFactory {
 		
 		return story;
 	}
+
 }

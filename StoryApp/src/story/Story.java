@@ -15,4 +15,10 @@ public class Story {
 	public void addRootPart(Part part) {
 		this.root = part;
 	}
+	
+	public String toString() {
+		return storyID + ": " + name + ", by " + creator;
+			
+	}
+
 }
