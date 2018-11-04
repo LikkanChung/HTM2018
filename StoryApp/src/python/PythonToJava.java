@@ -15,12 +15,21 @@ public class PythonToJava {
 	public static String executePythonFile(String pythonFilePath) {
 		try {
 			s = new StringBuilder();
-			p = Runtime.getRuntime().exec(pythonFilePath);
-			br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			p = Runtime.getRuntime().exec("python " + pythonFilePath);
 			
-			while(br.readLine() != null) {
-				s.append(br.readLine());
-				System.out.println(br.readLine());
+			try {
+				p.waitFor();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			String line = "";
+			
+			while((line = br.readLine()) != null) {
+				s.append(line);
+				System.out.println(line);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
