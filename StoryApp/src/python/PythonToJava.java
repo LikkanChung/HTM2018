@@ -17,13 +17,6 @@ public class PythonToJava {
 			s = new StringBuilder();
 			p = Runtime.getRuntime().exec("python " + pythonFilePath);
 			
-			//try {
-		//		p.waitFor();
-			//} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-			//	e.printStackTrace();
-		//	}
-			
 			br = new BufferedReader(new InputStreamReader(p.getInputStream()));
 			String line = "";
 			
