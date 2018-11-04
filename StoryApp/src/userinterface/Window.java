@@ -36,7 +36,6 @@ public class Window{
 		addScreenElements();		
 		setScreenDimensions();
 		
-		
 		contentText = new Text();
 		
 		myScene = new Scene(root, screenWidth, screenHeight);
@@ -76,7 +75,7 @@ public class Window{
 		
 		// Initialising timer and phone number. 
 		timerAndPhoneNumber = new Text();
-		timerAndPhoneNumber.setText("Timer goes here." + "\n \n" + "Phone Number here.");
+		timerAndPhoneNumber.setText("Timer goes here." + "\n \n" + "07418 343 514");
 		timerAndPhoneNumber.getStyleClass().add("bottomText");		
 	}
 	
@@ -94,6 +93,10 @@ public class Window{
 			vBox.getChildren().remove(contentText);
 			vBox.getChildren().add(contentText);
 		}
+	}
+	
+	public Text getText() {
+		return contentText;
 	}
 	
 	public void changeTextSize(int size) {
