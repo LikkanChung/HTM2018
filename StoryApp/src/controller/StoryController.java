@@ -10,6 +10,7 @@ public class StoryController {
 	private Story model;
 	private Window view;
 	
+	
 	public StoryController(Story model, Window view) {
 		this.model = model;
 		this.view = view;
@@ -17,6 +18,7 @@ public class StoryController {
 		// Mess with the story model i.e. begin the story. 
 		// Add whatever it returns to the view.
 		displayWelcomeScreen();
+		beginStory();
 	}
 	
 	private void displayWelcomeScreen() {
@@ -28,5 +30,7 @@ public class StoryController {
 		// Program runs beginning story part. 
 		// Choices that you make from the beginning help to influence the story.
 		view.setText(model.name);
+		view.startTimer();
+	
     }
 }

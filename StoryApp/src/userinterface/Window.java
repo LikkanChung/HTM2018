@@ -4,12 +4,20 @@ package userinterface;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class Window{
 	
@@ -22,9 +30,12 @@ public class Window{
 	
 	private BorderPane root;
 	private Text logoText;
-	private Text timerAndPhoneNumber;
 	private Text contentText;
 	private VBox vBox;
+	private Label timerLabel = new Label();
+	private static final Integer STARTTIME = 30;
+    private Timeline timeline;
+    private Integer timeSeconds = STARTTIME;
 	
 	public Window (Stage primaryStage) {
 		this.primaryStage = primaryStage;
@@ -53,8 +64,8 @@ public class Window{
 		root.setAlignment(logoText, Pos.CENTER);
 		
 		// Set bottom to timer and phone number.
-		root.setBottom(timerAndPhoneNumber);
-		root.setAlignment(timerAndPhoneNumber, Pos.CENTER);
+		root.setBottom(timerLabel);
+		root.setAlignment(timerLabel, Pos.CENTER);
 		
 		// Set center to 
 		root.setCenter(vBox);
@@ -73,10 +84,11 @@ public class Window{
 		logoText.setText("Game Title");
 		logoText.getStyleClass().add("logoText");
 		
-		// Initialising timer and phone number. 
-		timerAndPhoneNumber = new Text();
-		timerAndPhoneNumber.setText("        30.0" + "\n \n" + "07418 343 514");
-		timerAndPhoneNumber.getStyleClass().add("bottomText");		
+		// Initialising timer. 
+		timerLabel.setText("30");
+        timerLabel.setTextFill(Color.RED);
+        timerLabel.setStyle("-fx-font-size: 4em;");
+	
 	}
 	
 	private void setScreenDimensions() {
@@ -94,6 +106,34 @@ public class Window{
 			vBox.getChildren().remove(contentText);
 			vBox.getChildren().add(contentText);
 		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void startTimer() {
+		if (timeline != null) {
+            timeline.stop();
+        }
+        timeSeconds = STARTTIME;
+ 
+        // update timerLabel
+        timerLabel.setText(timeSeconds.toString());
+        timeline = new Timeline();
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1),
+        		new EventHandler() {
+        			// KeyFrame event handler
+					@Override
+					public void handle(Event event) {
+						timeSeconds--;
+                        // update timerLabel
+                        timerLabel.setText(
+                              timeSeconds.toString());
+                        if (timeSeconds <= 0) {
+                            timeline.stop();
+                        }
+					}
+                }));
+        timeline.playFromStart();
 	}
 	
 	public Text getText() {
