@@ -90,6 +90,7 @@ public class Window{
 		if(vBox.getChildren() == null) { // If component contains no text. 
 			vBox.getChildren().add(contentText);
 		}else {
+			System.out.println("running");
 			vBox.getChildren().remove(contentText);
 			vBox.getChildren().add(contentText);
 		}
