@@ -1,0 +1,19 @@
+.root{
+  -fx-background-color: #96baae;
+}
+
+.vbox{
+  -fx-background-color: #ffffff;
+}
+
+.logoText{
+  -fx-font: 75 "Tw Cen MT";
+}
+
+.bottomText{
+  -fx-font: 60 "Tw Cen MT";
+}
+
+.nextButton{
+  -fx-font: 60 "Tw Cen MT";
+}
