@@ -30,6 +30,7 @@ public class StoryFactory {
 		try {
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(sqlquery);
+			con.close();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
@@ -68,6 +69,7 @@ public class StoryFactory {
 				String creator = rs.getString(3);
 				list.add(new Story(StoryID, name, creator));
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -47,6 +47,7 @@ public class DBCreate {
 			stmt.execute(STORY);
 			stmt.execute(PART);
 			System.out.println("Finished executing");
+			con.close();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
